@@ -37,11 +37,14 @@ function SignIn() {
 
       // Check if the submitted email and password match the stored values
       if (values.email === storedEmail && values.confirm_password === storedConfirmPassword) {
-        console.log('Email and password match stored values.');
+        alert('Credentials mached successfully')
+        resetForm();
+        return true;
 
         // Perform further actions if the email and password match
       } else {
         console.log('Email and/or password do not match stored values.');
+        alert('Credentials are not matched. Please enter valid credentials')
         console.log(storedEmail,storedConfirmPassword);
         console.log(values.email,values.confirm_password);
       }
