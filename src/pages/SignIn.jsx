@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 
 const initialValues = {
   email: '',
-  confirm_password: ''
+  password: ''
 }
 function SignIn() {
   const [touchedFields, setTouchedFields] = useState({});
@@ -23,7 +23,7 @@ function SignIn() {
     initialValues: initialValues,
     validationSchema: Validate_Form,
     onSubmit: (values, action) => {
-      // Retrieve email and confirm_password from local storage
+      // Retrieve email and password from local storage
       
       console.log(values);
       console.log('button is clicked');
@@ -33,10 +33,10 @@ function SignIn() {
   });
   const match = ()=>{
     const storedEmail = localStorage.getItem('email');
-      const storedConfirmPassword = localStorage.getItem('confirm_password');
+      const storedConfirmPassword = localStorage.getItem('password');
 
       // Check if the submitted email and password match the stored values
-      if (values.email === storedEmail && values.confirm_password === storedConfirmPassword) {
+      if (values.email === storedEmail && values.password === storedConfirmPassword) {
         alert('Credentials mached successfully')
         resetForm();
         return true;
@@ -46,7 +46,7 @@ function SignIn() {
         console.log('Email and/or password do not match stored values.');
         alert('Credentials are not matched. Please enter valid credentials')
         console.log(storedEmail,storedConfirmPassword);
-        console.log(values.email,values.confirm_password);
+        console.log(values.email,values.password);
       }
 
 
@@ -78,12 +78,12 @@ function SignIn() {
           type={'password'}
           placeholder={'Enter your password'}
 
-          value={values.confirm_password}
+          value={values.password}
           onChange={handleChange}
-          click={() => handleBlur1('confirm_password')}
+          click={() => handleBlur1('password')}
           icon={<AiFillLock />}
-          name={'confirm_password'}
-          id={'confirm_password'}
+          name={'password'}
+          id={'password'}
           error={touchedFields.password ? errors.password : ''}
         ></InputField>
         <Button btn_name={'Submit'} type={'submit'} color={'success'} click={match} />
